@@ -1,0 +1,119 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <p class="h3 text-primary fw-bold">
+        Products Manager
+        <a class="btn btn-primary btn-sm" routerLink="/products/add"
+          ><i class="fa fa-plus-circle"> New</i></a
+        >
+      </p>
+
+      <!-- TODO - search from product name & filter from categories  -->
+
+      <!-- <form action="">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search Product"
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="submit"
+                  class="btn btn-outline-dark"
+                  value="Search"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form> -->
+    </div>
+  </div>
+</div>
+
+<!-- <pre>{{ products | json }}</pre> -->
+
+<!-- Loading spinner -->
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
+<!-- Error Message -->
+<div *ngIf="!loading && errorMessage">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="h4 text-danger fw-bold">{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- cards -->
+
+<div *ngIf="!loading && products.length > 0" class="container">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let product of products">
+      <div class="card shadow-lg my-2">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-sm-4">
+              <img [src]="product.image" alt="" class="product-img-thumb" />
+            </div>
+            <div class="col-sm-7">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  Product Name : <span class="fw-bold">{{ product.name }}</span>
+                </li>
+                <li class="list-group-item">
+                  Product category :
+                  <span class="fw-bold">{{ product.categoryId }}</span>
+                </li>
+                <li class="list-group-item">
+                  Product condition :
+                  <span class="fw-bold">{{ product.condition }}</span>
+                </li>
+                <li class="list-group-item">
+                  Product price :
+                  <span class="fw-bold">{{ product.price }}</span>
+                </li>
+                <li class="list-group-item">
+                  Comment : <span class="fw-bold">{{ product.comment }}</span>
+                </li>
+                <li class="list-group-item">
+                  Manufactured Date :
+                  <span class="fw-bold">{{ product.date }}</span>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="col-sm-1 d-flex flex-column justify-content-center align-items-center"
+            >
+              <a
+                routerLink="/products/view/{{ product.id }}"
+                class="btn btn-warning my-1"
+                ><i class="fa fa-eye"></i
+              ></a>
+              <a
+                routerLink="/products/edit/{{ product.id }}"
+                class="btn btn-primary my-1"
+                ><i class="fa fa-pen"></i
+              ></a>
+              <button
+                class="btn btn-danger my-1"
+                (click)="deleteProductHandler(product.id)"
+              >
+                <i class="fa fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

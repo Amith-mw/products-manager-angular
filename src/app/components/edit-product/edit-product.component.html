@@ -1,0 +1,108 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <p class="h3 text-primary fw-bold">Edit Product</p>
+    </div>
+  </div>
+</div>
+
+<!-- <pre>{{ product | json }}</pre> -->
+
+<!-- edit product form -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <form (submit)="updateProduct()">
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Product Name"
+            type="text"
+            required="true"
+            [(ngModel)]="product.name"
+            [value]="product.name"
+            name="name"
+          />
+        </div>
+        <div class="mb-2">
+          <select
+            name=""
+            id=""
+            class="form-control"
+            required="true"
+            [(ngModel)]="product.categoryId"
+            [value]="product.categoryId"
+            name="categoryId"
+          >
+            <option value="">Select Category</option>
+            <option [value]="category.id" *ngFor="let category of categories">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Price"
+            type="number"
+            required="true"
+            [(ngModel)]="product.price"
+            [value]="product.price"
+            name="price"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Manufactured Date"
+            type="date"
+            required="true"
+            [(ngModel)]="product.date"
+            [value]="product.date"
+            name="date"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Condition"
+            type="text"
+            required="true"
+            [(ngModel)]="product.condition"
+            [value]="product.condition"
+            name="condition"
+          />
+        </div>
+        <div class="mb-2">
+          <textarea
+            class="form-control"
+            placeholder="Comment"
+            type="text"
+            required="true"
+            [(ngModel)]="product.comment"
+            [value]="product.comment"
+            name="comment"
+          ></textarea>
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Image URL"
+            type="text"
+            required="true"
+            [(ngModel)]="product.image"
+            [value]="product.image"
+            name="image"
+          />
+        </div>
+        <div class="mb-2">
+          <input type="submit" class="btn btn-primary" value="Update" />
+          <a routerLink="/" class="btn btn-dark ms-1">Close</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <img [src]="product.image" alt="" class="product-img-thumb" />
+    </div>
+  </div>
+</div>

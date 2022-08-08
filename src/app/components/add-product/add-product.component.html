@@ -1,0 +1,117 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <p class="h3 text-primary fw-bold">Add Product</p>
+    </div>
+  </div>
+</div>
+
+<!-- Loading spinner -->
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
+<!-- Error Message -->
+<div *ngIf="!loading && errorMessage">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="h4 text-danger fw-bold">{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- create product form -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <form (submit)="submitNewProduct()">
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Product Name"
+            type="text"
+            [(ngModel)]="product.name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <select
+            name=""
+            id=""
+            class="form-control"
+            *ngIf="categories.length > 0"
+            [(ngModel)]="product.categoryId"
+            name="categoryId"
+            required
+          >
+            <option value="">Select Category</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Price"
+            type="number"
+            [(ngModel)]="product.price"
+            name="price"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Manufactured Date"
+            type="date"
+            [(ngModel)]="product.date"
+            name="date"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Condition"
+            type="text"
+            [(ngModel)]="product.condition"
+            name="condition"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <textarea
+            class="form-control"
+            placeholder="Comment"
+            type="text"
+            [(ngModel)]="product.comment"
+            name="comment"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-2">
+          <input
+            class="form-control"
+            placeholder="Image URL"
+            type="text"
+            [(ngModel)]="product.image"
+            name="image"
+            required
+          />
+        </div>
+
+        <div class="mb-2">
+          <input type="submit" class="btn btn-primary" value="Create" />
+          <a routerLink="/" class="btn btn-dark ms-1">Close</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4" *ngIf="product.image">
+      <img [src]="product.image" alt="" class="product-img-thumb" />
+    </div>
+  </div>
+</div>

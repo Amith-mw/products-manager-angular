@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": "tstprod001",
+      "name": "test_prod_01",
+      "categoryId": "tstcat004",
+      "condition": "refurbished",
+      "price": 99,
+      "comment": "this product is on showroom condition",
+      "date": "2022-08-02",
+      "image": "https://www.w3schools.com/w3css/img_lights.jpg"
+    },
+    {
+      "image": "https://angular.io/assets/images/logos/angular/shield-large.svg",
+      "name": "orange",
+      "categoryId": "tstcat002",
+      "price": 150,
+      "date": "2022-08-07",
+      "condition": "it's ok",
+      "comment": "this item is fresh",
+      "id": "DFG0koC"
+    }
+  ],
+  "categories": [
+    {
+      "id": "tstcat001",
+      "name": "test_category_01"
+    },
+    {
+      "id": "tstcat002",
+      "name": "test_category_02"
+    },
+    {
+      "id": "tstcat003",
+      "name": "test_category_03"
+    },
+    {
+      "id": "tstcat004",
+      "name": "test_category_04"
+    }
+  ]
+}
